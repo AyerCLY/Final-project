@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ethers, utils } from "ethers";
 import abi from "./contracts/BallotFee.json";
+import ierc20abi from "./contracts/IERC20.json";
 
 function App() {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -111,9 +112,11 @@ function App() {
         console.log("Approve handler");
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
-        const BallotContract = new ethers.Contract(contractAddress, contractABI, signer);
+        const BallotContract = new ethers.Contract("0x1E294987A5c25A59d35c14C8f6bbF8e81a0CF6C1", ierc20abi.abi, signer);
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
 
-        let txn = await BallotContract.approve(ethers.utils.parseUnits("1000",18));
+        let txn = await BallotContract.approve("0xDF87B51e0b43c88B020f147282A9EeD934b41502", ethers.utils.parseUnits("1000",18));
         await txn.wait(); 
         
       } else {
