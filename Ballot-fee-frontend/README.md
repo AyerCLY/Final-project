@@ -3,7 +3,7 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-This is the completed code for the Ballot DAPP.
+This is the completed code for the Ballot with transaction fee DAPP.
 
 ## To Install
 
